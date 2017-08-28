@@ -7,15 +7,17 @@ const config = require('../config');
 const db = require('../db/db');
 
 
-const comparePassword = (candidatePassword) => {
-  bcrypt.compare(candidatePassword);
-}
+const comparePassword = (plainPassword, hashPassword) => bcrypt.compareSync(plainPassword, hashPassword);
 
 // Local strategy
 const localLogin = new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
   const user = db.get('users')
-    .find( email )
+    .find({ email })
     .value();
+
+  user && comparePassword(password, user.password)
+    ? done(null, user)
+    : done(null, false);
 });
 
 const jwtOptions = {
@@ -35,3 +37,4 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
 });
 
 passport.use(jwtLogin);
+passport.use(localLogin);

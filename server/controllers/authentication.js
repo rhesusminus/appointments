@@ -9,6 +9,8 @@ const tokenForUser = (user) => jwt.encode({ sub: user.id, iat: new Date().getTim
 
 const cryptPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
+exports.signin = (req, res, next) => res.send({ token: tokenForUser(req.user) });
+
 exports.signup = (req, res, next) => {
   const email = req.body.email || '';
   const password = req.body.password || '';
