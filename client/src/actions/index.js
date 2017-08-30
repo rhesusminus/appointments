@@ -45,51 +45,26 @@ const receiveLogout = () => {
 }
 
 export const loginUser = ({ email, password }) => {
-  /*
-  const config = {
-    method: 'POST',
-    headers: { "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" },
-    body: JSON.stringify({ email, password })
-  }
-  */
 
   return (dispatch) => {
     dispatch(requestLogin({ email, password }));
 
     return axios.post('http://localhost:3090/signin', { email, password })
-    .then(response => {
-      const token = response.data.token;
-      console.log('RESPONSE:', response);
-      localStorage.setItem('jwt-token', token);
-      dispatch(receiveLogin(token));
-    })
-    .catch(error => {
-      const errorMessage = error.response.status === 401
-        ? 'Wrong email or password!'
-        : 'Something went wrong!';
-
-      dispatch(loginError(errorMessage));
-
-      return Promise.reject(error);
-    });
-
-    /*
-    return fetch('http://localhost:3090/signin', config)
-      .then((response) => response.json().then((user) => console.log('USER:', user)))
-      .then(({ user, response }) => {
-        console.log(`user: ${user} – response: ${response}`);
-        if(!response.ok) {
-          console.log('USER:', user);
-          dispatch(loginError(user.message))
-
-          return Promise.reject(user);
-        } else {
-          localStorage.setItem('jwt-token', user.token);
-          dispatch(receiveLogin(user));
-        }
+      .then(response => {
+        const token = response.data.token;
+        console.log('RESPONSE:', response);
+        localStorage.setItem('jwt-token', token);
+        dispatch(receiveLogin(token));
       })
-      .catch((err) => console.log('Error:', err));
-    */
+      .catch(error => {
+        const errorMessage = error.response.status === 401
+          ? 'Wrong email or password!'
+          : 'Something went wrong!';
+
+        dispatch(loginError(errorMessage));
+
+        return Promise.reject(error);
+      });
   }
 }
 

@@ -25,7 +25,11 @@ class Signin extends Component {
           <Field name="password" component="input" type="password" className="mdl-textfield__input" />
         </div>
         <br />
-        <button action="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Sign in</button>
+        <button
+          action="submit"
+          className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+          Sign in
+        </button>
       </form>
     )
   }
