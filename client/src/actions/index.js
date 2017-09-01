@@ -45,13 +45,6 @@ const receiveLogout = () => {
 }
 
 export const loginUser = ({ email, password }) => {
-  /*
-  const config = {
-    method: 'POST',
-    headers: { "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" },
-    body: JSON.stringify({ email, password })
-  }
-  */
 
   return (dispatch) => {
     dispatch(requestLogin({ email, password }));
@@ -59,7 +52,6 @@ export const loginUser = ({ email, password }) => {
     return axios.post('http://localhost:3090/signin', { email, password })
     .then(response => {
       const token = response.data.token;
-      console.log('RESPONSE:', response);
       localStorage.setItem('jwt-token', token);
       dispatch(receiveLogin(token));
     })
@@ -72,24 +64,6 @@ export const loginUser = ({ email, password }) => {
 
       return Promise.reject(error);
     });
-
-    /*
-    return fetch('http://localhost:3090/signin', config)
-      .then((response) => response.json().then((user) => console.log('USER:', user)))
-      .then(({ user, response }) => {
-        console.log(`user: ${user} – response: ${response}`);
-        if(!response.ok) {
-          console.log('USER:', user);
-          dispatch(loginError(user.message))
-
-          return Promise.reject(user);
-        } else {
-          localStorage.setItem('jwt-token', user.token);
-          dispatch(receiveLogin(user));
-        }
-      })
-      .catch((err) => console.log('Error:', err));
-    */
   }
 }
 
