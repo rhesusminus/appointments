@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE } from './types';
+import history from '../history';
 
 const requestLogin = (credentials) => {
     return {
@@ -54,6 +55,7 @@ export const loginUser = ({ email, password }) => {
       const token = response.data.token;
       localStorage.setItem('jwt-token', token);
       dispatch(receiveLogin(token));
+      history.push('/dashboard');
     })
     .catch(error => {
       const errorMessage = error.response.status === 401
@@ -72,5 +74,6 @@ export const logoutUser = () => {
     dispatch(requestLogout());
     localStorage.removeItem('jwt-token');
     dispatch(receiveLogout());
+    history.push('/');
   }
 }

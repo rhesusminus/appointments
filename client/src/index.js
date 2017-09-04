@@ -2,11 +2,15 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { Router, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
-import './index.css';
 import App from './App';
+import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './components/Dashboard';
 import rootReducer from './reducers/';
+import history from './history';
 import registerServiceWorker from './registerServiceWorker';
+import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -19,7 +23,12 @@ const store = createStoreWithMiddleware(
 
 render(
   <Provider store={store}>
-    <App />
+    <Router history={history}>
+      <Switch>
+        <PrivateRoute path='/dashboard' component={Dashboard} />
+        <Route path='/' component={App} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
