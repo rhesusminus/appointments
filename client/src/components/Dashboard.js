@@ -6,8 +6,7 @@ import { logoutUser, getCurrentUserData } from '../actions';
 
 class Dashboard extends Component {
   componentWillMount() {
-    const userData = this.props.getCurrentUserData();
-    console.log('USERDATA:', userData);
+    this.props.getCurrentUserData();
   }
 
   handleSignout = () => {
@@ -15,6 +14,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const fullName = `${this.props.user.data.name.firstName} ${this.props.user.data.name.lastName}`
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header className="mdl-layout__header">
@@ -24,8 +24,7 @@ class Dashboard extends Component {
             <nav className="mdl-navigation mdl-layout--large-screen-only">
               <a className="mdl-navigation__link" href="">Link</a>
               <a className="mdl-navigation__link" href="">Link</a>
-              <a className="mdl-navigation__link" href="">Link</a>
-              <a className="mdl-navigation__link" href="">Link</a>
+              <a className="mdl-navigation__link" href="">{fullName}</a>
               <button
                 className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
                 onClick={this.handleSignout}
@@ -36,7 +35,7 @@ class Dashboard extends Component {
           </div>
         </header>
         <div className="mdl-layout__drawer">
-          <span className="mdl-layout-title">Title</span>
+          <span className="mdl-layout-title">appointments</span>
           <nav className="mdl-navigation">
             <a className="mdl-navigation__link" href="">Link</a>
             <a className="mdl-navigation__link" href="">Link</a>
@@ -46,7 +45,6 @@ class Dashboard extends Component {
         </div>
         <main className="mdl-layout__content">
           <div className="page-content">
-
           </div>
         </main>
       </div>
@@ -54,8 +52,8 @@ class Dashboard extends Component {
   };
 }
 
-const mapStateToProps = (state) => {{ user: state.auth.user }};
+const mapStateToProps = ({ user }) => ({ user });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ logoutUser, getCurrentUserData }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
