@@ -12,20 +12,22 @@ class Signin extends Component {
   }
 
   renderField = ({ id, name, input, label, type, meta: { touched, error, warning } }) => {
-    return <div>
-      <div className="mdl-textfield mdl-js-textfield">
-        <input {...input} placeholder={label} type={type} className="mdl-textfield__input" id={id} />
-        <label htmlFor={id} className="mdl-textfield__label">{label}</label>
+    return (
+      <div>
+        <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input {...input} type={type} className="mdl-textfield__input" id={id} />
+          <label htmlFor={id} className="mdl-textfield__label">{label}</label>
+        </div>
+        <br />
+        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
-      <br />
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
+    );
   }
 
   required = (value) => value ? undefined : 'Required';
-  email = value =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
-  'Invalid email address' : undefined;
+  email = (value) => value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? 'Invalid email address'
+    : undefined;
 
   render() {
     const { handleSubmit, errorMessage } = this.props;

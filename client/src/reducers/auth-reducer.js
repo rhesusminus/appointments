@@ -1,8 +1,8 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../actions/types';
 
 const initialState = {
- isFetching: false,
- isAuthenticated: localStorage.getItem('jwt-token') ? true : false
+  isFetching: false,
+  isAuthenticated: localStorage.getItem('jwt-token') ? true : false
 }
 
 export default (state = initialState, action) => {

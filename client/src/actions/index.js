@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE } from './types';
 import history from '../history';
+export * from './user-actions';
 
 const requestLogin = (credentials) => {
     return {
@@ -46,26 +47,25 @@ const receiveLogout = () => {
 }
 
 export const loginUser = ({ email, password }) => {
-
   return (dispatch) => {
     dispatch(requestLogin({ email, password }));
 
     return axios.post('http://localhost:3090/signin', { email, password })
-    .then(response => {
-      const token = response.data.token;
-      localStorage.setItem('jwt-token', token);
-      dispatch(receiveLogin(token));
-      history.push('/dashboard');
-    })
-    .catch(error => {
-      const errorMessage = error.response.status === 401
-        ? 'Wrong email or password!'
-        : 'Something went wrong!';
+      .then(response => {
+        const token = response.data.token;
+        localStorage.setItem('jwt-token', token);
+        dispatch(receiveLogin(token));
+        history.push('/dashboard');
+      })
+      .catch(error => {
+        const errorMessage = error.response.status === 401
+          ? 'Wrong email or password!'
+          : 'Something went wrong!';
 
-      dispatch(loginError(errorMessage));
+        dispatch(loginError(errorMessage));
 
-      return Promise.reject(error);
-    });
+        return Promise.reject(error);
+      });
   }
 }
 
