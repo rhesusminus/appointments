@@ -6,8 +6,8 @@
         "firstName": "Mauno",
         "lastName": "Mato"
       },
-      "address": "",
-      "phonenumber": "",
+      "address": "Osoite goes here",
+      "phonenumber": "555-12345",
       "password": "$2a$10$pFTRTzi78j4Kw8HRvwOv7.5B1ErKN1Gi0vDdRslPq4Rm/rFX7Ov1S",
       "id": "6bf8de20-8b3c-11e7-94e8-01eeb8f01def"
     }

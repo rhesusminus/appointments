@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import classNames from 'classnames';
 import { loginUser } from '../actions';
 import '../css/Signin.css';
 
@@ -11,15 +12,23 @@ class Signin extends Component {
     this.props.loginUser({ email, password });
   }
 
-  renderField = ({ id, name, input, label, type, meta: { touched, error, warning } }) => {
+  renderField = ({ id, name, input, placeholder, type, meta: { touched, error, warning } }) => {
+    const inputClasses = classNames(
+      "form-control",
+      "form-control-lg",
+      touched && error && "form-control-danger"
+    );
+
     return (
       <div>
-        <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input {...input} type={type} className="mdl-textfield__input" id={id} />
-          <label htmlFor={id} className="mdl-textfield__label">{label}</label>
+        <div className="form-group">
+          <input {...input}
+            type={type}
+            className={inputClasses}
+            id={id}
+            placeholder={placeholder}
+          />
         </div>
-        <br />
-        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
     );
   }
@@ -34,10 +43,13 @@ class Signin extends Component {
 
     return (
       <div className="Signin">
-        {errorMessage}
+        <h2>Sign in to appoinments</h2>
+        <br />
+        {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+        <br />
         <form onSubmit={handleSubmit(this.handleSignin)}>
           <Field
-            label="Email"
+            placeholder="Enter email"
             name="email"
             id="email_input"
             component={this.renderField}
@@ -46,7 +58,7 @@ class Signin extends Component {
           />
           <br />
           <Field
-            label="Password"
+            placeholder="Enter password"
             name="password"
             id="password_input"
             component={this.renderField}
@@ -56,7 +68,7 @@ class Signin extends Component {
           <br />
           <button
             action="submit"
-            className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+            className="btn btn-lg btn-success">
             Sign in
           </button>
         </form>
@@ -66,10 +78,9 @@ class Signin extends Component {
 }
 
 const mapStateToProps = (state) => ({ errorMessage: state.auth.errorMessage });
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loginUser }, dispatch);
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({ form: 'signin' })
+  reduxForm({ form: 'signin-form' })
 )(Signin);

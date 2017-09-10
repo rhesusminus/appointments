@@ -5,12 +5,14 @@ import { Provider } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import App from './App';
+import Signin from './components/Signin';
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
 import rootReducer from './reducers/';
 import history from './history';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
+import './font-awesome-4.7.0/css/font-awesome.min.css';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -26,7 +28,7 @@ render(
     <Router history={history}>
       <Switch>
         <PrivateRoute path='/dashboard' component={Dashboard} />
-        <Route path='/' component={App} />
+        <Route path='/' component={Signin} />
       </Switch>
     </Router>
   </Provider>,

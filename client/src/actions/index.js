@@ -59,7 +59,7 @@ export const loginUser = ({ email, password }) => {
       })
       .catch(error => {
         const errorMessage = error.response.status === 401
-          ? 'Wrong email or password!'
+          ? 'Incorrect email or password!'
           : 'Something went wrong!';
 
         dispatch(loginError(errorMessage));
