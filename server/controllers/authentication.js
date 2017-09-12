@@ -13,11 +13,8 @@ exports.signin = (req, res, next) => res.send({ token: tokenForUser(req.user) })
 
 exports.signup = (req, res, next) => {
   console.log('SIGNUP REQ:', req.body);
-  const email = req.body.email;
-  const password = req.body.password;
-  const firstName = req.body.name.firstName;
-  const lastName = req.body.name.lastName;
-  const phonenumber = req.body.phonenumber;
+  const { email, password, phonenumber } = req.body;
+  const { firstName, lastName } = req.body.name;
 
   const user = {
     name: {

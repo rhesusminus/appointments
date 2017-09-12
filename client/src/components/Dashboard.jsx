@@ -27,7 +27,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('props:', this.props);
     const { firstName, lastName } = this.props.user.data.name;
     const { barbers } = this.props.barber;
     return (
