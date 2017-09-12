@@ -32,7 +32,7 @@ export default (props) => {
 
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink to="/dashboard/userinfo" className="nav-link" activeClassName="active">
+              <NavLink to="/userinfo" className="nav-link" activeClassName="active">
                 <i className="fa fa-user-circle-o fa-lg" aria-hidden="true" /> {firstName} {lastName}
               </NavLink>
             </li>

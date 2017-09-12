@@ -77,11 +77,12 @@ class Signin extends Component {
             className="btn btn-lg btn-success">
             Sign in
           </button>
-          OR
+          <br />
+          <br />
           <button
             onClick={this.createNewUser}
             className="btn btn-lg btn-success">
-            Create new user
+            Register
           </button>
         </form>
       </div>
