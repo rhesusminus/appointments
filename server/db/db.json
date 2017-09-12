@@ -11,5 +11,15 @@
       "password": "$2a$10$pFTRTzi78j4Kw8HRvwOv7.5B1ErKN1Gi0vDdRslPq4Rm/rFX7Ov1S",
       "id": "6bf8de20-8b3c-11e7-94e8-01eeb8f01def"
     }
+  ],
+  "barbers": [
+    {
+      "id": "bc0fd650-9728-11e7-89e9-ab0eaf95bb2f",
+      "name": "Jorma"
+    },
+    {
+      "id": "346691c0-9729-11e7-a789-7944f56411df",
+      "name": "Mirva"
+    }
   ]
 }

@@ -1,5 +1,4 @@
 const R = require('rambda');
-const jwt = require('jwt-simple');
 const db = require('../db/db');
 
 const getUsers = () => db.get('users');

@@ -3,3 +3,7 @@ nav a {
 }
 
 .nav-item button { cursor: pointer; cursor: hand; }
+
+nav {
+  background-color: #e3f2fd;
+}

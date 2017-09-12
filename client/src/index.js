@@ -4,13 +4,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
-import App from './App';
 import Signin from './components/Signin';
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
+import CreateNewUser from './components/CreateNewUser';
 import rootReducer from './reducers/';
 import history from './history';
-import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 import './font-awesome-4.7.0/css/font-awesome.min.css';
 
@@ -28,9 +27,9 @@ render(
     <Router history={history}>
       <Switch>
         <PrivateRoute path='/dashboard' component={Dashboard} />
+        <Route path='/createUser' component={CreateNewUser} />
         <Route path='/' component={Signin} />
       </Switch>
     </Router>
   </Provider>,
   document.getElementById('root'));
-registerServiceWorker();

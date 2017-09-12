@@ -12,6 +12,16 @@ class UserInfo extends Component {
     this.setState({ isEditable: !this.state.isEditable });
   }
 
+  cancelEditing = (event) => {
+    event.preventDefault();
+    this.setState({ isEditable: false });
+  }
+
+  saveUserData = (event) => {
+    event.preventDefault();
+    console.log('saveUserData called!');
+  }
+
   render() {
     const { address, email, phonenumber } = this.props.user.data;
     const { firstName, lastName } = this.props.user.data.name;
@@ -53,8 +63,8 @@ class UserInfo extends Component {
           {!isEditable && <button className="btn btn-primary" onClick={this.toggleEditable}
             disabled={isEditable}>Edit</button>}
           {isEditable && <div className="UserInfo__edit-buttons">
-            <button className="btn btn-danger">Cancel</button>
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button className="btn btn-danger" onClick={this.cancelEditing}>Cancel</button>
+            <button className="btn btn-primary" onClick={this.saveUserData}>Save</button>
           </div>}
         </form>
       </div>

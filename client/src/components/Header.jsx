@@ -7,7 +7,7 @@ export default (props) => {
   const { firstName, lastName, handleSignout } = props;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light justify-content-between" style={{ 'backgroundColor': '#e3f2fd' }}>
+    <nav className="navbar navbar-expand-lg navbar-light justify-content-between">
       <div className="container">
         <NavLink to="/dashboard">
           <h3>appointments</h3>

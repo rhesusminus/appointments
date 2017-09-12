@@ -12,9 +12,19 @@ const cryptPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync
 exports.signin = (req, res, next) => res.send({ token: tokenForUser(req.user) });
 
 exports.signup = (req, res, next) => {
-  const email = req.body.email || '';
-  const password = req.body.password || '';
+  console.log('SIGNUP REQ:', req.body);
+  const email = req.body.email;
+  const password = req.body.password;
+  const firstName = req.body.name.firstName;
+  const lastName = req.body.name.lastName;
+  const phonenumber = req.body.phonenumber;
+
   const user = {
+    name: {
+      firstName,
+      lastName
+    },
+    phonenumber,
     email,
     password
   };

@@ -1,5 +1,6 @@
 const Authentication = require('./controllers/authentication');
 const Users = require('./controllers/users');
+const Barbers = require('./controllers/barbers');
 const passportService = require('./services/passport');
 const passport = require('passport');
 
@@ -12,4 +13,6 @@ module.exports = (app) => {
 
   app.get('/user/:id', requireAuth, Users.user);
   app.get('/currentUser', requireAuth, Users.currentUser);
+
+  app.get('/getBarbers', Barbers.getBarbers);
 }

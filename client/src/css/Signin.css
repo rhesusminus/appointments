@@ -54,27 +54,3 @@
 .form-control-danger {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
 }
-  /*
-  background: url('../images/barber-1453064_1920.jpg') no-repeat center;
-  height: 100vh;
-  width: 100vw;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-}
-
-.Signin--button {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 200px;
-  border: 3px solid white;
-  color: white;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.Signin--button:focus {
-  outline: none;
-}
-*/

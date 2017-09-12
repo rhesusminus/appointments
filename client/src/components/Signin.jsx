@@ -3,6 +3,7 @@ import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import classNames from 'classnames';
+import history from '../history';
 import { loginUser } from '../actions';
 import '../css/Signin.css';
 
@@ -10,6 +11,11 @@ import '../css/Signin.css';
 class Signin extends Component {
   handleSignin = ({ email, password }) => {
     this.props.loginUser({ email, password });
+  }
+
+  createNewUser = (event) => {
+    event.preventDefault();
+    history.push('/createUser');
   }
 
   renderField = ({ id, name, input, placeholder, type, meta: { touched, error, warning } }) => {
@@ -51,7 +57,7 @@ class Signin extends Component {
           <Field
             placeholder="Enter email"
             name="email"
-            id="email_input"
+            id="emailInput"
             component={this.renderField}
             type="text"
             validate={[ this.required, this.email ]}
@@ -60,7 +66,7 @@ class Signin extends Component {
           <Field
             placeholder="Enter password"
             name="password"
-            id="password_input"
+            id="passwordInput"
             component={this.renderField}
             type="password"
             validate={this.required}
@@ -70,6 +76,12 @@ class Signin extends Component {
             action="submit"
             className="btn btn-lg btn-success">
             Sign in
+          </button>
+          OR
+          <button
+            onClick={this.createNewUser}
+            className="btn btn-lg btn-success">
+            Create new user
           </button>
         </form>
       </div>
