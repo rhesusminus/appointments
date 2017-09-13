@@ -21,5 +21,17 @@
       "id": "346691c0-9729-11e7-a789-7944f56411df",
       "name": "Mirva"
     }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "name": "Hiustenleikkaus, 30 min",
+      "duration": 30
+    },
+    {
+      "id": 2,
+      "name": "Hiustenvärjäys",
+      "duration": 60
+    }
   ]
 }
