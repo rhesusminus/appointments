@@ -13,15 +13,27 @@ class SelectWork extends Component {
     this.props.fetchBarbers();
   }
 
-  render = () => {
-    const { barbers } = this.props.barber;
+  handleChange = (event) => {
+    event.preventDefault();
+    const target = event.target.id;
+    const value = event.target.value;
 
+    this.setState({ [target]: value });
+  }
+
+  render = () => {
     return (
       <form>
         <div className="form-group col-md-4">
-          <label htmlFor="barber">Select barber</label>
-          <select className="form-control" id="barber" value={this.state.selectedBarber} onChange={this.handleChange}>
-            {barbers.map(barber =>
+          <label>Select barber</label>
+          <select
+            className="form-control"
+            id="selectedBarber"
+            value={this.state.selectedBarber}
+            onChange={this.handleChange}
+          >
+            <option></option>
+            {this.props.barbers.map(barber =>
               <option
                 key={barber.id}
                 value={barber.id}>
@@ -34,7 +46,7 @@ class SelectWork extends Component {
   };
 }
 
-const mapStateToProps = ({ barber }) => ({ barber });
+const mapStateToProps = ({ barber }) => ({ barbers: barber.barbers });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchBarbers }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectWork);

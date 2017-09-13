@@ -14,14 +14,6 @@ class Dashboard extends Component {
     this.props.getCurrentUserData();
   }
 
-  handleChange = (event) => {
-    event.preventDefault();
-    const target = event.target.id;
-    const value = event.target.value;
-
-    this.setState({ [target]: value });
-  }
-
   render() {
     const { firstName, lastName } = this.props.user.data.name;
     return (
