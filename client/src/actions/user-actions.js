@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USERDATA_REQUEST, USERDATA_SUCCESS, USERDATA_FAILURE, USERDATA_SAVE, USERDATA_SAVED } from './types';
+import { USERDATA_REQUEST, USERDATA_SUCCESS, USERDATA_SAVE, USERDATA_SAVED } from './types';
 
 const requestUserData = () => {
   return {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_BARBERS, RECEIVE_BARBERS } from './types';
+import { RECEIVE_BARBERS } from './types';
 
 
 const receiveBarbers = (barbers) => {

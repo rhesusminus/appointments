@@ -15,11 +15,23 @@
   "barbers": [
     {
       "id": "bc0fd650-9728-11e7-89e9-ab0eaf95bb2f",
-      "name": "Jorma"
+      "name": "Jorma",
+      "description": "Kuvaus",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/37.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/37.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/37.jpg"
+      }
     },
     {
       "id": "346691c0-9729-11e7-a789-7944f56411df",
-      "name": "Mirva"
+      "name": "Mirva",
+      "description": "Kuvaus",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/89.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/89.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/89.jpg"
+      }        
     }
   ],
   "jobs": [

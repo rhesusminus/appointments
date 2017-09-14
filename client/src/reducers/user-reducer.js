@@ -1,4 +1,4 @@
-import { USERDATA_REQUEST, USERDATA_SUCCESS, USERDATA_FAILURE } from '../actions/types';
+import { USERDATA_REQUEST, USERDATA_SUCCESS } from '../actions/types';
 
 const initialState = {
   isFetching: false,
