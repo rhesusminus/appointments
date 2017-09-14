@@ -1,6 +1,13 @@
 import axios from 'axios';
-import { RECEIVE_BARBERS } from './types';
+import { RECEIVE_BARBERS, SELECT_BARBER } from './types';
 
+
+export const selectBarber = (barber) => {
+  return {
+    type: SELECT_BARBER,
+    barber
+  }
+}
 
 const receiveBarbers = (barbers) => {
   return {

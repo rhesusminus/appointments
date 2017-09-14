@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchBarbers } from '../actions/barber-actions';
+import { fetchBarbers, selectBarber } from '../actions/barber-actions';
 
 
 class SelectWork extends Component {
@@ -15,30 +15,30 @@ class SelectWork extends Component {
 
   handleChange = (event) => {
     event.preventDefault();
-    const target = event.target.id;
-    const value = event.target.value;
-
-    this.setState({ [target]: value });
+    this.props.selectBarber(event.target.value);
   }
 
   render = () => {
+    const { barbers, selectedBarber, selectBarber } = this.props;
+
     return (
       <div className="SelectWork">
         <div id="accordion" role="tablist">
           <ul className="list-group">
             <li className="list-group-item">
-              <a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="selectBarber" href="#selectBarber">Select barber</a>
+              <a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="selectBarber"
+                href="#selectBarber">Select barber</a>
                 <div id="selectBarber" className="collapse" role="tabpanel" aria-labelledby="selectBarber">
                   <div className="row">
                     <div className="col-md-6">
                       <select
                         className="form-control"
                         id="selectedBarber"
-                        value={this.state.selectedBarber}
+                        value={selectedBarber}
                         onChange={this.handleChange}
                       >
                         <option></option>
-                        {this.props.barbers.map(barber =>
+                        {barbers.map(barber =>
                           <option
                             key={barber.id}
                             value={barber.id}>
@@ -47,7 +47,6 @@ class SelectWork extends Component {
                       </select>
                     </div>
                     <div className="col-md-6">
-                      Info goes here
                     </div>
                 </div>
               </div>
@@ -63,7 +62,10 @@ class SelectWork extends Component {
   };
 }
 
-const mapStateToProps = ({ barber }) => ({ barbers: barber.barbers });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchBarbers }, dispatch);
+const mapStateToProps = ({ barber }) => ({
+  barbers: barber.barbers,
+  selectedBarber: barber.selectedBarber
+});
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchBarbers, selectBarber }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectWork);

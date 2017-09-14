@@ -1,8 +1,9 @@
-import { FETCH_BARBERS, RECEIVE_BARBERS } from '../actions/types';
+import { FETCH_BARBERS, RECEIVE_BARBERS, SELECT_BARBER } from '../actions/types';
 
 const initialState = {
   isFetching: false,
-  barbers: []
+  barbers: [],
+  selectedBarber: ''
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         barbers: action.barbers,
         isFetching: action.isFetching
+      });
+
+    case SELECT_BARBER:
+      return Object.assign({}, state, {
+        selectedBarber: action.barber
       });
 
     default:
