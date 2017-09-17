@@ -14,5 +14,6 @@ module.exports = (app) => {
   app.get('/user/:id', requireAuth, Users.user);
   app.get('/currentUser', requireAuth, Users.currentUser);
 
-  app.get('/getBarbers', Barbers.getBarbers);
+  app.get('/barbers', Barbers.barbers);
+  app.get('/worklist', Barbers.worklist);
 }

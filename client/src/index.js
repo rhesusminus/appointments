@@ -11,6 +11,7 @@ import CreateNewUser from './components/CreateNewUser';
 import rootReducer from './reducers/';
 import history from './history';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './font-awesome-4.7.0/css/font-awesome.min.css';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);

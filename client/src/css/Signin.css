@@ -39,9 +39,6 @@
     1px  1px 0 #000;
 }
 
-.has-danger .form-control {
-}
-
 .form-control-danger, .form-control-success, .form-control-warning {
   padding-right: 2.25rem;
   background-repeat: no-repeat;

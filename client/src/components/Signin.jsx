@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { Button, Form, FormGroup, Alert, Label, Input, FormText } from 'reactstrap';
 import classNames from 'classnames';
 import history from '../history';
 import { loginUser } from '../actions';
@@ -19,6 +20,7 @@ class Signin extends Component {
   }
 
   renderField = ({ id, name, input, placeholder, type, meta: { touched, error, warning } }) => {
+    console.log(`id: ${id}, name: ${name}, input: ${input}, META: ${touched} ${error} ${warning}`);
     const inputClasses = classNames(
       "form-control",
       "form-control-lg",
@@ -44,52 +46,44 @@ class Signin extends Component {
     ? 'Invalid email address'
     : undefined;
 
-  render() {
+  render = () => {
     const { handleSubmit, errorMessage } = this.props;
 
     return (
       <div className="Signin">
         <h2>Sign in to appoinments</h2>
-        <br />
-        {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
-        <br />
-        <form onSubmit={handleSubmit(this.handleSignin)}>
-          <Field
-            placeholder="Enter email"
-            name="email"
-            id="emailInput"
-            component={this.renderField}
-            type="text"
-            validate={[ this.required, this.email ]}
-          />
-          <br />
-          <Field
-            placeholder="Enter password"
-            name="password"
-            id="passwordInput"
-            component={this.renderField}
-            type="password"
-            validate={this.required}
-          />
-          <br />
-          <button
-            action="submit"
-            className="btn btn-lg btn-success">
-            Sign in
-          </button>
-          OR
-          <button
-            onClick={this.createNewUser}
-            className="btn btn-lg btn-success">
-            Create new user
-          </button>
-        </form>
+        <Form onSubmit={handleSubmit(this.handleSignin)}>
+          {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+          <FormGroup>
+            <Field
+              placeholder="Enter email"
+              name="email"
+              id="emailInput"
+              component={this.renderField}
+              type="text"
+              validate={[ this.required, this.email ]}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Field
+              placeholder="Enter password"
+              name="password"
+              id="passwordInput"
+              component={this.renderField}
+              type="password"
+              validate={this.required}
+            />
+          </FormGroup>
+          <Button action="submit" color="success" size="lg">Sign in</Button>
+          <br /><br />
+          <Button color="success" size="lg" onClick={this.createNewUser}>Register</Button>
+        </Form>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({ errorMessage: state.auth.errorMessage });
+const mapStateToProps = ({ auth }) => ({ errorMessage: auth.errorMessage });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loginUser }, dispatch);
 
 export default compose(

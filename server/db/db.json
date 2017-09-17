@@ -31,18 +31,20 @@
         "large": "https://randomuser.me/api/portraits/women/89.jpg",
         "medium": "https://randomuser.me/api/portraits/med/women/89.jpg",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/89.jpg"
-      }        
+      }
     }
   ],
   "jobs": [
     {
       "id": 1,
       "name": "Hiustenleikkaus, 30 min",
+      "description": "Kuvaus goes here",
       "duration": 30
     },
     {
       "id": 2,
       "name": "Hiustenvärjäys",
+      "description": "Kuvaus goes here",
       "duration": 60
     }
   ]
