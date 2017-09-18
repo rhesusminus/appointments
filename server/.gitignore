@@ -3,8 +3,6 @@
 # dependencies
 /node_modules
 
-config.js
-
 # misc
 .DS_Store
 .env.local
