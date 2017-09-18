@@ -20,7 +20,6 @@ class Signin extends Component {
   }
 
   renderField = ({ id, name, input, placeholder, type, meta: { touched, error, warning } }) => {
-    console.log(`id: ${id}, name: ${name}, input: ${input}, META: ${touched} ${error} ${warning}`);
     const inputClasses = classNames(
       "form-control",
       "form-control-lg",

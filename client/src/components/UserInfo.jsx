@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import '../css/UserInfo.css';
 
 class UserInfo extends Component {
@@ -30,43 +31,38 @@ class UserInfo extends Component {
     return (
       <div className="UserInfo">
         <h3>Personal information</h3>
-        <form>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <label htmlFor="inputFirstName" className="col-form-label">First name</label>
-              <input type="text" className="form-control" id="inputFirstName"
-                placeholder="First name" value={firstName} readOnly={!isEditable} />
-            </div>
-            <div className="form-group col-md-6">
-              <label htmlFor="inputLastName" className="col-form-label">Last name</label>
-              <input type="text" className="form-control" id="inputLastName"
-                placeholder="Last name" value={lastName} readOnly={!isEditable} />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <label htmlFor="inputEmail" className="col-form-label">Email</label>
-              <input type="email" className="form-control" id="inputEmail"
-                placeholder="Email" value={email} readOnly={!isEditable} />
-            </div>
-            <div className="form-group col-md-6">
-              <label htmlFor="inputPhonenumber" className="col-form-label">Phonenumber</label>
-              <input type="text" className="form-control" id="inputPhonenumber"
-                placeholder="Phonenumber" value={phonenumber} readOnly={!isEditable} />
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputAddress" className="col-form-label">Address</label>
-            <input type="text" className="form-control" id="inputAddress"
-              placeholder="Address" value={address} readOnly={!isEditable} />
-          </div>
-          {!isEditable && <button className="btn btn-primary" onClick={this.toggleEditable}
-            disabled={isEditable}>Edit</button>}
+        <Form>
+          <Row>
+            <FormGroup className="col-md-6">
+              <Label for="inputFirstName">First name</Label>
+              <Input type="text" id="inputFirstName" placeholder="First name" value={firstName} readOnly={!isEditable} />
+            </FormGroup>
+            <FormGroup className="col-md-6">
+              <Label for="inputLastName">Last name</Label>
+              <Input type="text" id="inputLastName" placeholder="Last name" value={lastName} readOnly={!isEditable} />
+            </FormGroup>
+          </Row>
+          <Row>
+            <FormGroup className="col-md-6">
+              <Label for="inputEmail">Email</Label>
+              <Input type="email" id="inputEmail" placeholder="Email" value={email} readOnly={!isEditable} />
+            </FormGroup>
+            <FormGroup className="col-md-6">
+              <Label for="inputPhonenumber" >Phonenumber</Label>
+              <Input type="text" id="inputPhonenumber" placeholder="Phonenumber" value={phonenumber}
+                readOnly={!isEditable} />
+            </FormGroup>
+          </Row>
+          <FormGroup>
+            <Label for="inputAddress">Address</Label>
+            <Input type="text" id="inputAddress" placeholder="Address" value={address} readOnly={!isEditable} />
+          </FormGroup>
+          {!isEditable && <Button color="primary" onClick={this.toggleEditable} disabled={isEditable}>Edit</Button>}
           {isEditable && <div className="UserInfo__edit-buttons">
-            <button className="btn btn-danger" onClick={this.cancelEditing}>Cancel</button>
-            <button className="btn btn-primary" onClick={this.saveUserData}>Save</button>
+            <Button color="danger" onClick={this.cancelEditing}>Cancel</Button>
+            <Button color="primary" onClick={this.saveUserData}>Save</Button>
           </div>}
-        </form>
+        </Form>
       </div>
     );
   };
