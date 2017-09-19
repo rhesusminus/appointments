@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Collapse, ListGroup, ListGroupItem } from 'reactstrap';
+import { Collapse, ListGroup, ListGroupItemHeading, ListGroupItem } from 'reactstrap';
 import { fetchBarbers, selectBarber, fetchWorklist } from '../actions/barber-actions';
 import SelectBarber from './SelectBarber';
 import SelectWork from './SelectWork';
@@ -37,16 +37,24 @@ class SelectWorkForm extends Component {
       <div className="SelectWorkForm">
         <ListGroup>
           <ListGroupItem>
-            <h5 onClick={this.toggleCollapse} id="collapseSelectBarber">Select barber</h5>
-            <Collapse isOpen={collapseSelectBarber}>
-              <SelectBarber barbers={barbers} selectedBarber={selectedBarber} selectBarber={selectBarber} />
-            </Collapse>
+            <div style={{ width: '100%' }}>
+              <ListGroupItemHeading onClick={this.toggleCollapse} id="collapseSelectBarber">
+                Select barber
+              </ListGroupItemHeading>
+              <Collapse isOpen={collapseSelectBarber}>
+                <SelectBarber barbers={barbers} selectedBarber={selectedBarber} selectBarber={selectBarber} />
+              </Collapse>
+            </div>
           </ListGroupItem>
           <ListGroupItem>
-            <h5 onClick={this.toggleCollapse} id="collapseSelectWork">Select work</h5>
+            <div style={{ width: '100%' }}>
+              <ListGroupItemHeading onClick={this.toggleCollapse} id="collapseSelectWork">
+                Select work
+              </ListGroupItemHeading>
               <Collapse isOpen={collapseSelectWork}>
                 <SelectWork worklist={worklist} />
               </Collapse>
+            </div>
           </ListGroupItem>
         </ListGroup>
       </div>

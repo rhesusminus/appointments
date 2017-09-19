@@ -1,34 +1,13 @@
 import React from 'react';
 import { Row, Col, Input } from 'reactstrap';
 
-
-const ShowBarberInfo = (props) => {
-  const { name, description, picture } = props;
-  return (
-    <div className="SelectWork__ShowBarberInfo">
-      <Row>
-        <Col md="6">
-          <h4>{name}</h4>
-          {description}
-        </Col>
-        <Col md="6">
-          <img src={picture.medium} className="rounded-circle" alt="" />
-        </Col>
-      </Row>
-    </div>
-  )
-}
-
 export default ({ barbers, selectedBarber, selectBarber }) => {
   const handleChange = (event) => {
     event.preventDefault();
     selectBarber(event.target.value);
   }
 
-  const renderBarberInfo = () => {
-    const barber = barbers.find(barber => barber.id === selectedBarber);
-    return <ShowBarberInfo {...barber} />
-  }
+  const barber = barbers.find(barber => barber.id === selectedBarber);
 
   return (
     <Row>
@@ -38,9 +17,15 @@ export default ({ barbers, selectedBarber, selectBarber }) => {
           {barbers.map(barber => <option key={barber.id} value={barber.id}>{barber.name}</option>)}
         </Input>
       </Col>
-      <Col md="6">
-        {selectedBarber && renderBarberInfo(selectedBarber, barbers)}
-      </Col>
+      {selectedBarber &&
+        <Col md="4">
+          <h4>{barber.name}</h4>
+          {barber.description}
+        </Col>}
+      {selectedBarber &&
+        <Col md="2">
+          <img src={barber.picture.medium} className="rounded-circle" alt="" />
+        </Col>}
     </Row>
   );
 }
