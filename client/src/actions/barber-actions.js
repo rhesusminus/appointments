@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { RECEIVE_BARBERS, SELECT_BARBER, WORKLIST_RECEIVE, WORKLIST_REQUEST } from './types';
-
+import { RECEIVE_BARBERS, SELECT_BARBER, WORKLIST_RECEIVE, WORKLIST_REQUEST, SELECT_WORK } from './types';
 
 export const selectBarber = (barber) => {
   return {
@@ -26,6 +25,13 @@ export const fetchBarbers = () => {
       .catch(error => {
         console.log('fetchBarbers error: ', error);
       })
+  }
+}
+
+export const selectWork = (work) => {
+  return {
+    type: SELECT_WORK,
+    work
   }
 }
 

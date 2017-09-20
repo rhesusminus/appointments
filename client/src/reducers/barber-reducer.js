@@ -1,11 +1,13 @@
-import { FETCH_BARBERS, RECEIVE_BARBERS, SELECT_BARBER, WORKLIST_RECEIVE, WORKLIST_REQUEST  } from '../actions/types';
+import { FETCH_BARBERS, RECEIVE_BARBERS, SELECT_BARBER, WORKLIST_RECEIVE, WORKLIST_REQUEST,
+  SELECT_WORK } from '../actions/types';
 
 const initialState = {
   isFetchingBarbers: false,
   barbers: [],
   selectedBarber: '',
   isFetchingWorklist: false,
-  worklist: []
+  worklist: [],
+  selectedWork: ''
 };
 
 export default (state = initialState, action) => {
@@ -33,6 +35,11 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         worklist: action.worklist,
         isFetchingWorklist: false
+      });
+
+    case SELECT_WORK:
+      return Object.assign({}, state, {
+        selectedWork: action.work
       });
 
     default:

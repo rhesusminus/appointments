@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Collapse, ListGroup, ListGroupItemHeading, ListGroupItem } from 'reactstrap';
-import { fetchBarbers, selectBarber, fetchWorklist } from '../actions/barber-actions';
+import { fetchBarbers, selectBarber, fetchWorklist, selectWork } from '../actions/barber-actions';
 import SelectBarber from './SelectBarber';
 import SelectWork from './SelectWork';
 
@@ -31,7 +31,7 @@ class SelectWorkForm extends Component {
 
   render = () => {
     const { collapseSelectBarber, collapseSelectWork } = this.state;
-    const { barbers, selectedBarber, selectBarber, worklist } = this.props;
+    const { barbers, selectedBarber, selectBarber, worklist, selectWork, selectedWork } = this.props;
 
     return (
       <div className="SelectWorkForm">
@@ -52,7 +52,7 @@ class SelectWorkForm extends Component {
                 Select work
               </ListGroupItemHeading>
               <Collapse isOpen={collapseSelectWork}>
-                <SelectWork worklist={worklist} />
+                <SelectWork worklist={worklist} selectedWork={selectedWork} selectWork={selectWork} />
               </Collapse>
             </div>
           </ListGroupItem>
@@ -65,8 +65,10 @@ class SelectWorkForm extends Component {
 const mapStateToProps = ({ barber }) => ({
   barbers: barber.barbers,
   selectedBarber: barber.selectedBarber,
-  worklist: barber.worklist
+  worklist: barber.worklist,
+  selectedWork: barber.selectedWork
 });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchBarbers, selectBarber, fetchWorklist }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  fetchBarbers, selectBarber, fetchWorklist, selectWork }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectWorkForm);
