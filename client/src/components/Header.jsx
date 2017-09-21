@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink as Link } from 'react-router-dom';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Popover, PopoverTitle,
-  PopoverContent, Button } from 'reactstrap';
+import { Navbar, NavbarBrand, Popover, PopoverTitle, PopoverContent, Button } from 'reactstrap';
 import '../css/Header.css';
 
 
@@ -34,4 +34,10 @@ export default class Header extends Component {
       </Navbar>
     );
   }
+}
+
+Header.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  handleSignout: PropTypes.func.isRequired
 }

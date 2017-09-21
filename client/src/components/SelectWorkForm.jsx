@@ -52,7 +52,7 @@ class SelectWorkForm extends Component {
                 Select work
               </ListGroupItemHeading>
               <Collapse isOpen={collapseSelectWork}>
-                <SelectWork worklist={worklist} selectedWork={selectedWork} selectWork={selectWork} />
+                <SelectWork worklist={worklist} selectedWork={parseInt(selectedWork, 10)} selectWork={selectWork} />
               </Collapse>
             </div>
           </ListGroupItem>

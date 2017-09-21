@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import { saveUserData } from '../actions/user-actions';
 
-
 class CreateNewUser extends Component {
   state = {
     firstName: '',

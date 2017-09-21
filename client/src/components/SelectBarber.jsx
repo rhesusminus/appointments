@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, Input } from 'reactstrap';
 
-export default ({ barbers, selectedBarber, selectBarber }) => {
+const SelectBarber = ({ barbers, selectedBarber, selectBarber }) => {
   const handleChange = (event) => {
     event.preventDefault();
     selectBarber(event.target.value);
@@ -29,3 +30,11 @@ export default ({ barbers, selectedBarber, selectBarber }) => {
     </Row>
   );
 }
+
+SelectBarber.propTypes = {
+  barbers: PropTypes.array.isRequired,
+  selectBarber: PropTypes.func.isRequired,
+  selectedBarber: PropTypes.string
+}
+
+export default SelectBarber;
