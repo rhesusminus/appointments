@@ -1,33 +1,10 @@
 import axios from 'axios';
 import { USERDATA_REQUEST, USERDATA_SUCCESS, USERDATA_SAVE, USERDATA_SAVED } from './types';
 
-const requestUserData = () => {
-  return {
-    type: USERDATA_REQUEST,
-    isFetching: true,
-  }
-};
-
-const receiveUserData = (userData) => {
-  return {
-    type: USERDATA_SUCCESS,
-    isFetching: false,
-    userData
-  }
-}
-
-const saveNewUser = (userData) => {
-  return {
-    type: USERDATA_SAVE,
-    payload: userData
-  }
-}
-
-const userSaved = () => {
-  return {
-    type: USERDATA_SAVED
-  }
-}
+const requestUserData = () => ({ type: USERDATA_REQUEST, isFetching: true });
+const receiveUserData = (userData) => ({ type: USERDATA_SUCCESS, isFetching: false, userData });
+const saveNewUser = (userData) => ({ type: USERDATA_SAVE, payload: userData });
+const userSaved = () => ({ type: USERDATA_SAVED });
 
 export const getCurrentUserData = () => {
   return (dispatch) => {

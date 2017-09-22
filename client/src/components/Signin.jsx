@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Form, FormGroup, Alert, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Alert } from 'reactstrap';
 import classNames from 'classnames';
 import history from '../history';
 import { loginUser } from '../actions';
@@ -29,12 +29,7 @@ class Signin extends Component {
     return (
       <div>
         <div className="form-group">
-          <input {...input}
-            type={type}
-            className={inputClasses}
-            id={id}
-            placeholder={placeholder}
-          />
+          <input {...input} type={type} className={inputClasses} id={id} placeholder={placeholder} />
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import '../css/UserInfo.css';
 
+
 class UserInfo extends Component {
   state = {
     isEditable: false

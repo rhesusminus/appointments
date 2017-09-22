@@ -1,20 +1,9 @@
 import axios from 'axios';
 import { RECEIVE_BARBERS, SELECT_BARBER, WORKLIST_RECEIVE, WORKLIST_REQUEST, SELECT_WORK } from './types';
 
-export const selectBarber = (barber) => {
-  return {
-    type: SELECT_BARBER,
-    barber
-  }
-}
+export const selectBarber = (barber) => ({ type: SELECT_BARBER, barber });
 
-const receiveBarbers = (barbers) => {
-  return {
-    type: RECEIVE_BARBERS,
-    isFetching: false,
-    barbers
-  }
-}
+const receiveBarbers = (barbers) => ({ type: RECEIVE_BARBERS, isFetching: false, barbers });
 
 export const fetchBarbers = () => {
   return (dispatch) => {
@@ -28,25 +17,10 @@ export const fetchBarbers = () => {
   }
 }
 
-export const selectWork = (work) => {
-  return {
-    type: SELECT_WORK,
-    work
-  }
-}
+export const selectWork = (work) => ({ type: SELECT_WORK, work });
 
-const requestWorklist = () => {
-  return {
-    type: WORKLIST_REQUEST
-  }
-}
-
-const receiveWorklist = (worklist) => {
-  return {
-    type: WORKLIST_RECEIVE,
-    worklist
-  }
-}
+const requestWorklist = () => ({ type: WORKLIST_REQUEST });
+const receiveWorklist = (worklist) => ({ type: WORKLIST_RECEIVE, worklist });
 
 export const fetchWorklist = () => {
   return (dispatch) => {

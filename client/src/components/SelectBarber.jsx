@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Input } from 'reactstrap';
 
+
 const SelectBarber = ({ barbers, selectedBarber, selectBarber }) => {
   const handleChange = (event) => {
     event.preventDefault();
@@ -22,11 +23,13 @@ const SelectBarber = ({ barbers, selectedBarber, selectBarber }) => {
         <Col md="4">
           <h4>{barber.name}</h4>
           {barber.description}
-        </Col>}
+        </Col>
+      }
       {selectedBarber &&
         <Col md="2">
           <img src={barber.picture.medium} className="rounded-circle" alt="" />
-        </Col>}
+        </Col>
+      }
     </Row>
   );
 }

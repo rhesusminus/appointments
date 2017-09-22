@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import { saveUserData } from '../actions/user-actions';
 
+
 class CreateNewUser extends Component {
   state = {
     firstName: '',
@@ -69,9 +70,7 @@ class CreateNewUser extends Component {
                   onChange={this.handleChange} value={password} />
               </FormGroup>
             </Row>
-            <Button type="submit" color="success">
-              Save
-            </Button>
+            <Button type="submit" color="success">Save</Button>
           </Form>
         </div>
       </div>
