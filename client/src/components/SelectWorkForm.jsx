@@ -5,6 +5,7 @@ import { Collapse, ListGroup, ListGroupItemHeading, ListGroupItem } from 'reacts
 import { fetchBarbers, selectBarber, fetchWorklist, selectWork } from '../actions/barber-actions';
 import SelectBarber from './SelectBarber';
 import SelectWork from './SelectWork';
+import '../css/SelectWorkForm.css';
 
 
 class SelectWorkForm extends Component {
@@ -21,7 +22,7 @@ class SelectWorkForm extends Component {
   toggleCollapse = (event) => {
     event.preventDefault();
     const id = event.target.id;
-    this.setState({ [id]: !this.state[id] });
+    this.setState(state => ({ ...state, [id]: !this.state[id] }));
   }
 
   handleChange = (event) => {

@@ -58,11 +58,15 @@ class UserInfo extends Component {
             <Label for="inputAddress">Address</Label>
             <Input type="text" id="inputAddress" placeholder="Address" value={address} readOnly={!isEditable} />
           </FormGroup>
-          {!isEditable && <Button color="primary" onClick={this.toggleEditable} disabled={isEditable}>Edit</Button>}
-          {isEditable && <div className="UserInfo__edit-buttons">
-            <Button color="danger" onClick={this.cancelEditing}>Cancel</Button>
-            <Button color="primary" onClick={this.saveUserData}>Save</Button>
-          </div>}
+          {!isEditable &&
+            <Button color="primary" onClick={this.toggleEditable} disabled={isEditable}>Edit</Button>
+          }
+          {isEditable &&
+            <div className="UserInfo__edit-buttons">
+              <Button color="danger" onClick={this.cancelEditing}>Cancel</Button>
+              <Button color="primary" onClick={this.saveUserData}>Save</Button>
+            </div>
+          }
         </Form>
       </div>
     );
