@@ -8,5 +8,5 @@ Client: React, Redux, react-router, etc.
 Server: Node.js, express, ...
 
 ## usage
-Clone the repo and do `npm install` in the client and the server folders. Run `nm run dev` in the server-folder and `npm run start` in the client-folder to start developmenting or testing.
+Clone the repo and do `npm install` in the client and the server folders. Run `npm run dev` in the server-folder and `npm run start` in the client-folder to start developmenting or testing.
 Default user is `a@a.com` and password is `password`.
